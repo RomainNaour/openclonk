@@ -1017,7 +1017,7 @@ include_directories(SYSTEM
 ############################################################################
 add_definitions(-DHAVE_CONFIG_H)
 
-add_library(libmisc
+add_library(libmisc STATIC
 src/C4Include.cpp
 src/c4group/C4Group.cpp
 src/c4group/C4Group.h
@@ -1066,7 +1066,7 @@ if(UNIX AND NOT APPLE)
 	target_link_libraries(libmisc rt)
 endif()
 
-add_library(libc4script
+add_library(libc4script STATIC
 src/C4Include.cpp
 src/c4group/C4GroupSet.cpp
 src/c4group/C4GroupSet.h
