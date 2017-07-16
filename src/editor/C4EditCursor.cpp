@@ -735,8 +735,8 @@ void C4EditCursor::ApplyToolFill()
 
 bool C4EditCursor::DoContextMenu(DWORD dwKeyState)
 {
-	bool fObjectSelected = !!Selection.ObjectCount();
 #ifdef USE_WIN32_WINDOWS
+	bool fObjectSelected = !!Selection.ObjectCount();
 	POINT point; GetCursorPos(&point);
 	HMENU hContext = GetSubMenu(hMenu,0);
 	SetMenuItemEnable( hContext, IDM_VIEWPORT_DELETE, fObjectSelected && Console.Editing);
@@ -845,6 +845,7 @@ bool C4EditCursor::DoContextMenu(DWORD dwKeyState)
 	ObjselectDelItems();
 #else
 #ifdef WITH_DEVELOPER_MODE
+	bool fObjectSelected = !!Selection.ObjectCount();
 	gtk_widget_set_sensitive(itemDelete, fObjectSelected && Console.Editing);
 	gtk_widget_set_sensitive(itemDuplicate, fObjectSelected && Console.Editing);
 	gtk_widget_set_sensitive(itemGrabContents, fObjectSelected && Selection.GetObject()->Contents.ObjectCount() && Console.Editing);
