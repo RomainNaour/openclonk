@@ -949,7 +949,8 @@ C4TexRef::~C4TexRef()
 #ifndef USE_CONSOLE
 	if (pGL && pGL->pCurrCtx) glDeleteTextures(1, &texName);
 #endif
-	if (pDraw) delete [] static_cast<unsigned char*>(texLock.pBits); texLock.pBits = 0;
+	if (pDraw) delete [] static_cast<unsigned char*>(texLock.pBits);
+	texLock.pBits = 0;
 	// remove from texture manager
 	pTexMgr->UnregTex(this);
 }

@@ -292,7 +292,9 @@ C4MaterialMap::~C4MaterialMap()
 
 void C4MaterialMap::Clear()
 {
-	if (Map) delete [] Map; Map=NULL; Num=0;
+	if (Map) delete [] Map;
+	Map=NULL;
+	Num=0;
 	delete [] ppReactionMap; ppReactionMap = NULL;
 }
 

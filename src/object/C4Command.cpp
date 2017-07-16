@@ -1457,7 +1457,8 @@ void C4Command::Clear()
 	Ty=0;
 	Target=Target2=NULL;
 	UpdateInterval=0;
-	if (Text) Text->DecRef(); Text=NULL;
+	if (Text) Text->DecRef();
+	Text=NULL;
 	BaseMode=C4CMD_Mode_SilentSub;
 }
 

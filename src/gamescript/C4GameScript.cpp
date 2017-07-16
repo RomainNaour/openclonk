@@ -1017,7 +1017,8 @@ static C4Value FnGetComponent(C4PropList * _this, C4ID idComponent, int iIndex, 
 	else
 	{
 		// Get object
-		if (!pObj) pObj=Object(_this); if (!pObj) return C4Value();
+		if (!pObj) pObj=Object(_this);
+		if (!pObj) return C4Value();
 		// Component count
 		if (idComponent) return C4VInt(pObj->Component.GetIDCount(idComponent));
 		// Indexed component

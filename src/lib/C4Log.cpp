@@ -100,8 +100,10 @@ bool OpenExtraLogs()
 bool CloseLog()
 {
 	// close
-	if (C4ShaderLogFile) fclose(C4ShaderLogFile); C4ShaderLogFile = NULL;
-	if (C4LogFile) fclose(C4LogFile); C4LogFile = NULL;
+	if (C4ShaderLogFile) fclose(C4ShaderLogFile);
+	C4ShaderLogFile = NULL;
+	if (C4LogFile) fclose(C4LogFile);
+	C4LogFile = NULL;
 	// ok
 	return true;
 }

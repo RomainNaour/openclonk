@@ -1873,7 +1873,8 @@ bool C4Network2::InitLeague(bool *pCancel)
 		MasterServerAddress.Clear();
 		Game.Parameters.League.Clear();
 		Game.Parameters.LeagueAddress.Clear();
-		if (pLeagueClient) delete pLeagueClient; pLeagueClient = NULL;
+		if (pLeagueClient) delete pLeagueClient;
+		pLeagueClient = NULL;
 
 		// Not needed?
 		if (!Config.Network.MasterServerSignUp && !Config.Network.LeagueServerSignUp)

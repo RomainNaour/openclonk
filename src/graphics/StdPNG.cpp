@@ -140,7 +140,8 @@ void CPNGFile::Clear()
 	// clear internal png ptrs
 	ClearPngStructs();
 	// free file ptr if owned
-	if (pFile && fpFileOwned) delete [] pFile; pFile=NULL;
+	if (pFile && fpFileOwned) delete [] pFile;
+        pFile=NULL;
 	// reset fields
 	fpFileOwned=false;
 	pFilePtr=NULL;

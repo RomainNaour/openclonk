@@ -943,7 +943,9 @@ C4MCParser::~C4MCParser()
 void C4MCParser::Clear()
 {
 	// clear code if present
-	if (Code) delete [] Code; Code=NULL; BPos = NULL; CPos=NULL;
+	if (Code) delete [] Code;
+	Code=NULL; BPos = NULL;
+	CPos=NULL;
 	// reset filename
 	*Filename=0;
 }

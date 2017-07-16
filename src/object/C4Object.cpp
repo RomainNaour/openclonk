@@ -2548,8 +2548,10 @@ void C4Object::Clear()
 
 	if (pEffects) { delete pEffects; pEffects=NULL; }
 	if (pSolidMaskData) { delete pSolidMaskData; pSolidMaskData=NULL; }
-	if (Menu) delete Menu; Menu=NULL;
-	if (MaterialContents) delete MaterialContents; MaterialContents=NULL;
+	if (Menu) delete Menu;
+	Menu=NULL;
+	if (MaterialContents) delete MaterialContents;
+	MaterialContents=NULL;
 	// clear commands!
 	C4Command *pCom, *pNext;
 	for (pCom=Command; pCom; pCom=pNext)
@@ -2659,7 +2661,8 @@ void C4Object::SyncClearance()
 	// Menu
 	CloseMenu(true);
 	// Material contents
-	if (MaterialContents) delete MaterialContents; MaterialContents=NULL;
+	if (MaterialContents) delete MaterialContents;
+	MaterialContents=NULL;
 	// reset speed of staticback-objects
 	if (Category & C4D_StaticBack)
 	{
@@ -3585,11 +3588,13 @@ void C4Object::ExecAction()
 		case COMD_Up: case COMD_UpRight:  case COMD_UpLeft:
 			if (ydir > 0) ydir -= decel;
 			else ydir -= accel;
-			if (ydir < -limit) ydir = -limit; break;
+			if (ydir < -limit) ydir = -limit;
+			break;
 		case COMD_Down: case COMD_DownRight: case COMD_DownLeft:
 			if (ydir < 0) ydir += decel;
 			else ydir += accel;
-			if (ydir > +limit) ydir = +limit; break;
+			if (ydir > +limit) ydir = +limit;
+			break;
 		case COMD_Left: case COMD_Right: case COMD_Stop:
 			if (ydir < 0) ydir += decel;
 			if (ydir > 0) ydir -= decel;
@@ -3716,8 +3721,10 @@ void C4Object::ExecAction()
 		// xdir/ydir bounds, don't apply if COMD_None
 		if (Action.ComDir != COMD_None)
 		{
-			if (ydir<-limit) ydir=-limit; if (ydir>+limit) ydir=+limit;
-			if (xdir>+limit) xdir=+limit; if (xdir<-limit) xdir=-limit;
+			if (ydir<-limit) ydir=-limit;
+			if (ydir>+limit) ydir=+limit;
+			if (xdir>+limit) xdir=+limit;
+			if (xdir<-limit) xdir=-limit;
 		}
 		// Surface dir bound
 		if (!GBackLiquid(GetX(),GetY()-1+Def->Float*Con/FullCon-1)) if (ydir<0) ydir=0;
@@ -3948,8 +3955,10 @@ void C4Object::ExecAction()
 		// xdir/ydir bounds, don't apply if COMD_None
 		if (Action.ComDir != COMD_None)
 		{
-			if (ydir<-limit) ydir=-limit; if (ydir>+limit) ydir=+limit;
-			if (xdir>+limit) xdir=+limit; if (xdir<-limit) xdir=-limit;
+			if (ydir<-limit) ydir=-limit;
+			if (ydir>+limit) ydir=+limit;
+			if (xdir>+limit) xdir=+limit;
+			if (xdir<-limit) xdir=-limit;
 		}
 
 		Mobile=1;
@@ -4260,7 +4269,8 @@ bool C4Object::IsInLiquidCheck() const
 
 void C4Object::SetRotation(int32_t nr)
 {
-	while (nr<0) nr+=360; nr%=360;
+	while (nr<0) nr+=360;
+	nr%=360;
 	// remove solid mask
 	if (pSolidMaskData) pSolidMaskData->Remove(false);
 	// set rotation
@@ -4342,7 +4352,8 @@ bool C4Object::Collect(C4Object *pObj)
 bool C4Object::GrabInfo(C4Object *pFrom)
 {
 	// safety
-	if (!pFrom) return false; if (!Status || !pFrom->Status) return false;
+	if (!pFrom) return false;
+	if (!Status || !pFrom->Status) return false;
 	// even more safety (own info: success)
 	if (pFrom == this) return true;
 	// only if other object has info

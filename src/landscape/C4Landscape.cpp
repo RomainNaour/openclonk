@@ -69,7 +69,8 @@ namespace
 			d = 2 * dx - dy; aincr = 2 * (dx - dy); bincr = 2 * dx; x = x1; y = y1;
 			if (!fnCallback(x, y))
 			{
-				if (lastx) *lastx = x; if (lasty) *lasty = y;
+				if (lastx) *lastx = x;
+				if (lasty) *lasty = y;
 				return false;
 			}
 			for (y = y1 + 1; y <= y2; ++y)
@@ -78,7 +79,8 @@ namespace
 				else d += bincr;
 				if (!fnCallback(x, y))
 				{
-					if (lastx) *lastx = x; if (lasty) *lasty = y;
+					if (lastx) *lastx = x;
+					if (lasty) *lasty = y;
 					return false;
 				}
 			}
@@ -91,7 +93,8 @@ namespace
 			d = 2 * dy - dx; aincr = 2 * (dy - dx); bincr = 2 * dy; x = x1; y = y1;
 			if (!fnCallback(x, y))
 			{
-				if (lastx) *lastx = x; if (lasty) *lasty = y;
+				if (lastx) *lastx = x;
+				if (lasty) *lasty = y;
 				return false;
 			}
 			for (x = x1 + 1; x <= x2; ++x)
@@ -100,7 +103,8 @@ namespace
 				else d += bincr;
 				if (!fnCallback(x, y))
 				{
-					if (lastx) *lastx = x; if (lasty) *lasty = y;
+					if (lastx) *lastx = x;
+					if (lasty) *lasty = y;
 					return false;
 				}
 			}
